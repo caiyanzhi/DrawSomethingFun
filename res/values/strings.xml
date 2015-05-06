@@ -1,8 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">DrawSomethingFun</string>
+    <string name="app_name">你猜我画</string>
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-
+    <string name="label_me">我的设备</string>
+    <string name="search">搜索</string>
+	<string name="hint_to_open_wifi_p2p">请连接一个可用的wifi</string>
+	<string name="connect_peer_button">邀请</string>
+	<string name="enterRoom">搜索房間</string>
+	<string name="createRoom">創建房間</string>
+	<string name="empty_message">没有小伙伴入网哦，快点搜索一下吧</string>
+	<string name="disconnect_peer_button">断开</string>
+	<string name="label_peers">在网内的设备</string>
+    <string name="group_owner_text">是否作为服务器</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="client_text">点击进入游戏按钮进入房间</string>
+    <string name="empty"></string>
+    <string name="loading">加载中...</string>
+    <string name="enterRoomNum">请输入房间号2-254</string>
+    <string name="roomNum">房間號</string>
+    <string name="about">关于我们</string>
+    <string name="intruduction">游戏规则</string>
+    <string name="author">卢秀秀小分队</string>
+    <string name="version">v1.0 copyright</string>
+    <string name="ruleTitle">游戏规则</string>
+    <string name="rule">\n
+        \u0020 \u0020 \u0020\u0020游戏一共有六轮，每轮有60秒。\n
+        \u0020 \u0020 \u0020\u0020每轮游戏分为绘画者和猜词者，绘画者根据给出的词画出相应图片，猜词者根据图片回答图片对应的词，回答正确则猜词者胜，错误或是超时则绘图者胜。进入下一轮时双方身份互换。\n
+        \u0020 \u0020 \u0020\u0020六轮结束后，猜中局数多的胜出，局数相同时，用时少的胜出，否则，平局。
+        </string>
+    <string name="pen">画笔</string>
+    <string name="clear">清空</string>
+    <string name="ready">准备</string>
+    <string name="resttime">剩余时间：</string>
+    <string name="hindtoguess">输入答案</string>
+    <string name="cancel">取消</string>
+    <string name="sendanswer">发送</string>
+    <string-array name="answer">
+        <item>树</item>
+        <item>花</item>
+        <item>草</item>
+        <item>气球</item>
+        <item>鸡蛋</item>
+        <item>杯子</item>
+        <item>手机</item>
+        <item>扇子</item>
+        <item>书</item>
+    </string-array>
+    <string-array name="hind">
+        <item>植物</item>
+        <item>植物</item>
+        <item>植物</item>
+        <item>喜庆用品</item>
+        <item>食物</item>
+        <item>日常用品</item>
+        <item>日常用品</item>
+        <item>日常用品</item>
+        <item>装逼必备</item>
+    </string-array>
+    
 </resources>

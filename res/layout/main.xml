@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:background="@color/white"
+    android:layout_height="fill_parent">
+    <include layout="@layout/actionbar_port_about_layout" />
+    
+    <RelativeLayout android:layout_centerInParent="true"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        >
+        <Button android:text="@string/enterRoom"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
+        	style="@style/buttonStyle"
+	        android:id="@+id/enterRoom"
+	        android:layout_centerHorizontal="true"
+	        android:onClick="onClick"/>
+    
+	    <Button android:text="@string/createRoom"
+	        android:layout_below="@id/enterRoom"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
+        	style="@style/buttonStyle"
+	        android:layout_centerHorizontal="true"
+	        android:id="@+id/createRoom"
+	        android:onClick="onClick"/>
+    
+    	<Button  android:text="@string/intruduction"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
+        	style="@style/buttonStyle"
+	        android:layout_below="@id/createRoom"
+	        android:id="@+id/intruduction"
+	        android:onClick="onClick"/>
+    	<Button  android:text="@string/about"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
+        	style="@style/buttonStyle"
+	        android:layout_centerHorizontal="true"
+	        android:layout_below="@id/intruduction"
+	        android:id="@+id/about"
+	        android:onClick="onClick"/>
+    </RelativeLayout>
+</RelativeLayout>

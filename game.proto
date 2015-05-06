@@ -1,0 +1,71 @@
+package tutorial;   
+option java_package = "com.protobuftest.protobuf";   
+option java_outer_classname = "GameProbuf";   
+
+message Game
+{
+  message Question
+  {
+    required string hind = 1;
+    required string answer = 2;
+    required string size = 3;
+  }
+
+  message Begin
+  {
+     required int32 isDraw = 1;
+     required int32 loopCnt = 2;
+     required Question qestion = 3;
+     required int32 ttl = 4;
+  }
+
+  message Ready
+  {
+    required int32 ready = 1;
+  }
+
+  message End
+  {
+    required int32 isWin = 1;
+    required int32 timeSpend = 2;
+    required int32 winCount = 3;
+    required int32 hertimeSpend = 4;
+    required int32 herwinCount = 5;
+  }
+
+  message Answer
+  {
+    required string ans = 1;
+  }
+
+  message Point
+  {
+    required int32 x = 1;
+    required int32 y = 2;
+  }
+
+  message Result
+  {
+    required int32 isWin = 1;
+    required int32 timeSpend = 2;
+    required string answer = 3;
+  }
+
+  enum MsgType
+  {
+    READY = 1;
+    BEGIN = 2;
+    POINT = 3;
+    ANSWER = 4;
+    RESULT = 5;
+    END = 6;
+  }
+
+  required MsgType type = 1;
+  optional Begin begin = 2;
+  optional Ready ready = 3;
+  optional Point point = 4;
+  optional Answer answer = 5;
+  optional Result result= 6;
+  optional End end= 7;
+}
