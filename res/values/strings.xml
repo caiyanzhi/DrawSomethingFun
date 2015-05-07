@@ -60,4 +60,7 @@
         <item>装逼必备</item>
     </string-array>
     
+    <string name="dialog_color_picker">颜色板</string>
+    <string name="press_color_to_apply">点击右方颜色应用</string>  
+    <string name="paintWidth">画笔宽度</string>
 </resources>

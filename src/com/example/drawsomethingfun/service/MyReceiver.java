@@ -35,12 +35,12 @@ public class MyReceiver extends BroadcastReceiver{
 		String action = intent.getAction();
 		if(Constants.CANCEL_LOADING.equals(action))
 		{
-			Log.v("cyz","cyz cancel loading");
+			Log.v("cyz","cancel loading");
 			Utils.closeLoadingDialog();
 		}
 		else if(action.equals(Constants.SOCKET_DISCONNECT))
 		{
-			Toast.makeText(context, "你或者对方居然断线了T^T", 200).show();
+			Toast.makeText(context, "对方居然断线了T^T", 200).show();
 			activity.finish();
 		}
 		else if(action.equals(Constants.RESTARTGAME))

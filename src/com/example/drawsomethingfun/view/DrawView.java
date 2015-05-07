@@ -22,7 +22,7 @@ import android.view.WindowManager;
 /**
  * 
  * @author yanzhi
- *
+ * 画笔没有添加形状
  */
 
 @SuppressLint({ "ClickableViewAccessibility", "DrawAllocation" })
@@ -31,18 +31,19 @@ public class DrawView extends View {
     float preY;
     private Path path;
     public Paint paint = null;
-    int VIEW_WIDTH = 320;
+
+	int VIEW_WIDTH = 320;
     int VIEW_HEIGHT = 480;
     Bitmap cacheBitmap = null;
     Canvas cacheCanvas = null;
- 
+    private int loopCnt = 0;//作用是为了保证每一局中的画画不会因为延时在下一局中传送给对方
     public DrawView(Context context, AttributeSet set) {
         super(context, set);
         init();
     }
     
     boolean drawable = false;
-    private boolean isReceivable = false;
+    
     public void setDrawable(boolean drawable)
     {
     	this.drawable = drawable;
@@ -76,12 +77,12 @@ public class DrawView extends View {
     
     public void receiceDraw(Point point)
     {
-    	if(isReceivable() == false)
-    		return;
     	//*屏幕宽高解决分辨率问题
     	float x = point.getX()*VIEW_WIDTH;
     	float y = point.getY()*VIEW_HEIGHT;
     	PointType type = point.getType();
+    	paint.setColor(point.getColor());
+    	paint.setStrokeWidth(point.getWidth());
     	switch(type.getNumber())
     	{
     	case PointType.ACTION_DOWN_VALUE:
@@ -112,20 +113,20 @@ public class DrawView extends View {
         Point p = null;
         switch (event.getAction()) {
         case MotionEvent.ACTION_DOWN:
-        	p = Point.newBuilder().setX(x/VIEW_WIDTH).setY(y/VIEW_HEIGHT).setType(PointType.ACTION_DOWN).build();
+        	p = Point.newBuilder().setLoopCnt(getLoopCnt()).setX(x/VIEW_WIDTH).setY(y/VIEW_HEIGHT).setWidth(paint.getStrokeWidth()).setColor(paint.getColor()).setType(PointType.ACTION_DOWN).build();
             path.moveTo(x, y);
             preX = x;
             preY = y;
             break;
         case MotionEvent.ACTION_MOVE:
-        	p = Point.newBuilder().setX(x/VIEW_WIDTH).setY(y/VIEW_HEIGHT).setType(PointType.ACTION_MOVE).build();
+        	p = Point.newBuilder().setLoopCnt(getLoopCnt()).setX(x/VIEW_WIDTH).setY(y/VIEW_HEIGHT).setWidth(paint.getStrokeWidth()).setColor(paint.getColor()).setType(PointType.ACTION_MOVE).build();
         	
             path.quadTo(preX, preY, x, y);
             preX = x;
             preY = y;
             break;
         case MotionEvent.ACTION_UP:
-        	p = Point.newBuilder().setX(x/VIEW_WIDTH).setY(y/VIEW_HEIGHT).setType(PointType.ACTION_UP).build();
+        	p = Point.newBuilder().setLoopCnt(getLoopCnt()).setX(x/VIEW_WIDTH).setY(y/VIEW_HEIGHT).setWidth(paint.getStrokeWidth()).setColor(paint.getColor()).setType(PointType.ACTION_UP).build();
         	
             cacheCanvas.drawPath(path, paint);
             path.reset();
@@ -154,12 +155,20 @@ public class DrawView extends View {
         canvas.drawPath(path, paint);
     }
 
-	public boolean isReceivable() {
-		return isReceivable;
+	public void setPaint(Paint paint2) {
+		// TODO Auto-generated method stub
+		paint = paint2;
+	}
+    public Paint getPaint() {
+		return paint;
 	}
 
-	public void setReceivable(boolean isReceivable) {
-		this.isReceivable = isReceivable;
+	public int getLoopCnt() {
+		return loopCnt;
 	}
- 
+
+	public void setLoopCnt(int loopCnt) {
+		this.loopCnt = loopCnt;
+	}
+
 }

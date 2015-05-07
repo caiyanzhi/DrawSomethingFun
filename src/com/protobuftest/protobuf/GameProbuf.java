@@ -3670,6 +3670,33 @@ public final class GameProbuf {
        * <code>required .tutorial.Game.Point.PointType type = 3;</code>
        */
       com.protobuftest.protobuf.GameProbuf.Game.Point.PointType getType();
+
+      /**
+       * <code>required int32 color = 4;</code>
+       */
+      boolean hasColor();
+      /**
+       * <code>required int32 color = 4;</code>
+       */
+      int getColor();
+
+      /**
+       * <code>required float width = 5;</code>
+       */
+      boolean hasWidth();
+      /**
+       * <code>required float width = 5;</code>
+       */
+      float getWidth();
+
+      /**
+       * <code>required int32 loopCnt = 6;</code>
+       */
+      boolean hasLoopCnt();
+      /**
+       * <code>required int32 loopCnt = 6;</code>
+       */
+      int getLoopCnt();
     }
     /**
      * Protobuf type {@code tutorial.Game.Point}
@@ -3742,6 +3769,21 @@ public final class GameProbuf {
                   bitField0_ |= 0x00000004;
                   type_ = value;
                 }
+                break;
+              }
+              case 32: {
+                bitField0_ |= 0x00000008;
+                color_ = input.readInt32();
+                break;
+              }
+              case 45: {
+                bitField0_ |= 0x00000010;
+                width_ = input.readFloat();
+                break;
+              }
+              case 48: {
+                bitField0_ |= 0x00000020;
+                loopCnt_ = input.readInt32();
                 break;
               }
             }
@@ -3920,10 +3962,58 @@ public final class GameProbuf {
         return type_;
       }
 
+      public static final int COLOR_FIELD_NUMBER = 4;
+      private int color_;
+      /**
+       * <code>required int32 color = 4;</code>
+       */
+      public boolean hasColor() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required int32 color = 4;</code>
+       */
+      public int getColor() {
+        return color_;
+      }
+
+      public static final int WIDTH_FIELD_NUMBER = 5;
+      private float width_;
+      /**
+       * <code>required float width = 5;</code>
+       */
+      public boolean hasWidth() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>required float width = 5;</code>
+       */
+      public float getWidth() {
+        return width_;
+      }
+
+      public static final int LOOPCNT_FIELD_NUMBER = 6;
+      private int loopCnt_;
+      /**
+       * <code>required int32 loopCnt = 6;</code>
+       */
+      public boolean hasLoopCnt() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>required int32 loopCnt = 6;</code>
+       */
+      public int getLoopCnt() {
+        return loopCnt_;
+      }
+
       private void initFields() {
         x_ = 0F;
         y_ = 0F;
         type_ = com.protobuftest.protobuf.GameProbuf.Game.Point.PointType.ACTION_DOWN;
+        color_ = 0;
+        width_ = 0F;
+        loopCnt_ = 0;
       }
       private byte memoizedIsInitialized = -1;
       public final boolean isInitialized() {
@@ -3943,6 +4033,18 @@ public final class GameProbuf {
           memoizedIsInitialized = 0;
           return false;
         }
+        if (!hasColor()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        if (!hasWidth()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+        if (!hasLoopCnt()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
         memoizedIsInitialized = 1;
         return true;
       }
@@ -3958,6 +4060,15 @@ public final class GameProbuf {
         }
         if (((bitField0_ & 0x00000004) == 0x00000004)) {
           output.writeEnum(3, type_.getNumber());
+        }
+        if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          output.writeInt32(4, color_);
+        }
+        if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          output.writeFloat(5, width_);
+        }
+        if (((bitField0_ & 0x00000020) == 0x00000020)) {
+          output.writeInt32(6, loopCnt_);
         }
         getUnknownFields().writeTo(output);
       }
@@ -3979,6 +4090,18 @@ public final class GameProbuf {
         if (((bitField0_ & 0x00000004) == 0x00000004)) {
           size += com.google.protobuf.CodedOutputStream
             .computeEnumSize(3, type_.getNumber());
+        }
+        if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt32Size(4, color_);
+        }
+        if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeFloatSize(5, width_);
+        }
+        if (((bitField0_ & 0x00000020) == 0x00000020)) {
+          size += com.google.protobuf.CodedOutputStream
+            .computeInt32Size(6, loopCnt_);
         }
         size += getUnknownFields().getSerializedSize();
         memoizedSerializedSize = size;
@@ -4103,6 +4226,12 @@ public final class GameProbuf {
           bitField0_ = (bitField0_ & ~0x00000002);
           type_ = com.protobuftest.protobuf.GameProbuf.Game.Point.PointType.ACTION_DOWN;
           bitField0_ = (bitField0_ & ~0x00000004);
+          color_ = 0;
+          bitField0_ = (bitField0_ & ~0x00000008);
+          width_ = 0F;
+          bitField0_ = (bitField0_ & ~0x00000010);
+          loopCnt_ = 0;
+          bitField0_ = (bitField0_ & ~0x00000020);
           return this;
         }
 
@@ -4143,6 +4272,18 @@ public final class GameProbuf {
             to_bitField0_ |= 0x00000004;
           }
           result.type_ = type_;
+          if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+            to_bitField0_ |= 0x00000008;
+          }
+          result.color_ = color_;
+          if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+            to_bitField0_ |= 0x00000010;
+          }
+          result.width_ = width_;
+          if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+            to_bitField0_ |= 0x00000020;
+          }
+          result.loopCnt_ = loopCnt_;
           result.bitField0_ = to_bitField0_;
           onBuilt();
           return result;
@@ -4168,6 +4309,15 @@ public final class GameProbuf {
           if (other.hasType()) {
             setType(other.getType());
           }
+          if (other.hasColor()) {
+            setColor(other.getColor());
+          }
+          if (other.hasWidth()) {
+            setWidth(other.getWidth());
+          }
+          if (other.hasLoopCnt()) {
+            setLoopCnt(other.getLoopCnt());
+          }
           this.mergeUnknownFields(other.getUnknownFields());
           return this;
         }
@@ -4182,6 +4332,18 @@ public final class GameProbuf {
             return false;
           }
           if (!hasType()) {
+            
+            return false;
+          }
+          if (!hasColor()) {
+            
+            return false;
+          }
+          if (!hasWidth()) {
+            
+            return false;
+          }
+          if (!hasLoopCnt()) {
             
             return false;
           }
@@ -4302,6 +4464,102 @@ public final class GameProbuf {
         public Builder clearType() {
           bitField0_ = (bitField0_ & ~0x00000004);
           type_ = com.protobuftest.protobuf.GameProbuf.Game.Point.PointType.ACTION_DOWN;
+          onChanged();
+          return this;
+        }
+
+        private int color_ ;
+        /**
+         * <code>required int32 color = 4;</code>
+         */
+        public boolean hasColor() {
+          return ((bitField0_ & 0x00000008) == 0x00000008);
+        }
+        /**
+         * <code>required int32 color = 4;</code>
+         */
+        public int getColor() {
+          return color_;
+        }
+        /**
+         * <code>required int32 color = 4;</code>
+         */
+        public Builder setColor(int value) {
+          bitField0_ |= 0x00000008;
+          color_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>required int32 color = 4;</code>
+         */
+        public Builder clearColor() {
+          bitField0_ = (bitField0_ & ~0x00000008);
+          color_ = 0;
+          onChanged();
+          return this;
+        }
+
+        private float width_ ;
+        /**
+         * <code>required float width = 5;</code>
+         */
+        public boolean hasWidth() {
+          return ((bitField0_ & 0x00000010) == 0x00000010);
+        }
+        /**
+         * <code>required float width = 5;</code>
+         */
+        public float getWidth() {
+          return width_;
+        }
+        /**
+         * <code>required float width = 5;</code>
+         */
+        public Builder setWidth(float value) {
+          bitField0_ |= 0x00000010;
+          width_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>required float width = 5;</code>
+         */
+        public Builder clearWidth() {
+          bitField0_ = (bitField0_ & ~0x00000010);
+          width_ = 0F;
+          onChanged();
+          return this;
+        }
+
+        private int loopCnt_ ;
+        /**
+         * <code>required int32 loopCnt = 6;</code>
+         */
+        public boolean hasLoopCnt() {
+          return ((bitField0_ & 0x00000020) == 0x00000020);
+        }
+        /**
+         * <code>required int32 loopCnt = 6;</code>
+         */
+        public int getLoopCnt() {
+          return loopCnt_;
+        }
+        /**
+         * <code>required int32 loopCnt = 6;</code>
+         */
+        public Builder setLoopCnt(int value) {
+          bitField0_ |= 0x00000020;
+          loopCnt_ = value;
+          onChanged();
+          return this;
+        }
+        /**
+         * <code>required int32 loopCnt = 6;</code>
+         */
+        public Builder clearLoopCnt() {
+          bitField0_ = (bitField0_ & ~0x00000020);
+          loopCnt_ = 0;
           onChanged();
           return this;
         }
@@ -6371,7 +6629,7 @@ public final class GameProbuf {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\ngame.proto\022\010tutorial\"\334\006\n\004Game\022$\n\004type\030" +
+      "\n\ngame.proto\022\010tutorial\"\213\007\n\004Game\022$\n\004type\030" +
       "\001 \002(\0162\026.tutorial.Game.MsgType\022#\n\005begin\030\002" +
       " \001(\0132\024.tutorial.Game.Begin\022#\n\005ready\030\003 \001(" +
       "\0132\024.tutorial.Game.Ready\022#\n\005point\030\004 \001(\0132\024" +
@@ -6385,16 +6643,17 @@ public final class GameProbuf {
       " \002(\005\032\026\n\005Ready\022\r\n\005ready\030\001 \002(\005\032d\n\003End\022\r\n\005i" +
       "sWin\030\001 \002(\005\022\021\n\ttimeSpend\030\002 \002(\005\022\020\n\010winCoun" +
       "t\030\003 \002(\005\022\024\n\014hertimeSpend\030\004 \002(\005\022\023\n\013herwinC" +
-      "ount\030\005 \002(\005\032\025\n\006Answer\022\013\n\003ans\030\001 \002(\t\032\211\001\n\005Po" +
+      "ount\030\005 \002(\005\032\025\n\006Answer\022\013\n\003ans\030\001 \002(\t\032\270\001\n\005Po" +
       "int\022\t\n\001x\030\001 \002(\002\022\t\n\001y\030\002 \002(\002\022,\n\004type\030\003 \002(\0162" +
-      "\036.tutorial.Game.Point.PointType\"<\n\tPoint" +
-      "Type\022\017\n\013ACTION_DOWN\020\000\022\017\n\013ACTION_MOVE\020\001\022\r" +
-      "\n\tACTION_UP\020\002\032:\n\006Result\022\r\n\005isWin\030\001 \002(\005\022\021" +
-      "\n\ttimeSpend\030\002 \002(\005\022\016\n\006answer\030\003 \002(\t\"Z\n\007Msg",
-      "Type\022\t\n\005READY\020\001\022\t\n\005BEGIN\020\002\022\t\n\005POINT\020\003\022\n\n" +
-      "\006ANSWER\020\004\022\n\n\006RESULT\020\005\022\007\n\003END\020\006\022\r\n\tCLEARD" +
-      "RAW\020\007B\'\n\031com.protobuftest.protobufB\nGame" +
-      "Probuf"
+      "\036.tutorial.Game.Point.PointType\022\r\n\005color" +
+      "\030\004 \002(\005\022\r\n\005width\030\005 \002(\002\022\017\n\007loopCnt\030\006 \002(\005\"<" +
+      "\n\tPointType\022\017\n\013ACTION_DOWN\020\000\022\017\n\013ACTION_M" +
+      "OVE\020\001\022\r\n\tACTION_UP\020\002\032:\n\006Result\022\r\n\005isWin\030",
+      "\001 \002(\005\022\021\n\ttimeSpend\030\002 \002(\005\022\016\n\006answer\030\003 \002(\t" +
+      "\"Z\n\007MsgType\022\t\n\005READY\020\001\022\t\n\005BEGIN\020\002\022\t\n\005POI" +
+      "NT\020\003\022\n\n\006ANSWER\020\004\022\n\n\006RESULT\020\005\022\007\n\003END\020\006\022\r\n" +
+      "\tCLEARDRAW\020\007B\'\n\031com.protobuftest.protobu" +
+      "fB\nGameProbuf"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -6449,7 +6708,7 @@ public final class GameProbuf {
     internal_static_tutorial_Game_Point_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessage.FieldAccessorTable(
         internal_static_tutorial_Game_Point_descriptor,
-        new java.lang.String[] { "X", "Y", "Type", });
+        new java.lang.String[] { "X", "Y", "Type", "Color", "Width", "LoopCnt", });
     internal_static_tutorial_Game_Result_descriptor =
       internal_static_tutorial_Game_descriptor.getNestedTypes().get(6);
     internal_static_tutorial_Game_Result_fieldAccessorTable = new

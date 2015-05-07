@@ -91,10 +91,8 @@ public class Utils {
 	static public void closeLoadingDialog() {
 		if (loadingDialog != null) {
 			if(loadingDialog.isShowing())
-			{
 				loadingDialog.dismiss();
-				loadingDialog = null;
-			}
+			loadingDialog = null;
 		}
 	}
 	

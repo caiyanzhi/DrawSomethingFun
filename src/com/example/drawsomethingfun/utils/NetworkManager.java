@@ -95,15 +95,14 @@ public class NetworkManager {
 						try {
 							serivce = new ServerSocket(30001);
 							Socket socket = serivce.accept();
-
-							Log.v("cyz", "cyz receive connect");
 							Intent intent = new Intent();
 							intent.setAction(Constants.CANCEL_LOADING);
 							context.sendBroadcast(intent);
+							System.out.println("conneted");
 							// 停止廣播線程
 							isFinishBroadcast = true;
 							new Thread(new ServieRead(socket)).start();
-							
+
 							serivce.close();
 							serivce = null;
 							Log.v("cyz", "cyz release port");
@@ -130,8 +129,6 @@ public class NetworkManager {
 		@Override
 		public void run() {
 			Intent intent = new Intent();
-			intent.setAction(Constants.CANCEL_LOADING);
-			context.sendBroadcast(intent);
 			while (true) {
 				if (socket != null) {
 					try {
@@ -258,6 +255,7 @@ public class NetworkManager {
 
 						OutputStreamWriter osWrite = new OutputStreamWriter(
 								output);
+						socket.setTcpNoDelay(true);
 						// AddressBook a = AddressBook.parseFrom(bytes);
 						// Log.v("cyz","cyz+mess"+a.getHeader().getLength());
 
@@ -307,7 +305,7 @@ public class NetworkManager {
 						context.sendBroadcast(intent);
 						break;
 					}
-
+					
 					int len = byteArrayToInt(bytes);
 					Log.v("cyz", "cyz" + len);
 
@@ -316,7 +314,10 @@ public class NetworkManager {
 					intent.setAction(Constants.RECEIVEMSG);
 					intent.putExtra("message", temp);
 					context.sendBroadcast(intent);
-					
+					// AddressBook addrbook = AddressBook.parseFrom(temp);
+					// String msg =
+					// "cyz count = "+addrbook.getPersonCount()+" phone = "+addrbook.getPerson(0).getName();
+					// Log.v("","cyz"+msg);
 					if (isFinish) {
 						break;
 					}
@@ -374,7 +375,6 @@ public class NetworkManager {
 							byte[] data = Utils.getIpAddress(context)
 									.getBytes();
 							// 224.0.0.1为广播地址
-							
 							InetAddress address = InetAddress
 									.getByName("255.255.255.255");
 							// 这个地方可以输出判断该地址是不是广播类型的地址
@@ -426,9 +426,9 @@ public class NetworkManager {
 						lock.acquire();
 						ms.setSoTimeout(5000);
 						ms.receive(dp);
+						lock.release();
 						final String strMsg = new String(dp.getData()).trim();
 
-						lock.release();
 						Log.v("", "cyz receive broadcast " + strMsg);
 						// 開啟線程連接服務器
 						new Thread(new SocketClientThread(strMsg)).start();

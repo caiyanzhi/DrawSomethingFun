@@ -35,47 +35,62 @@ public final class R {
     }
     public static final class drawable {
         public static final int back=0x7f020000;
-        public static final int com_facebook_picker_magnifier=0x7f020001;
-        public static final int guid_pic=0x7f020002;
-        public static final int ic_launcher=0x7f020003;
-        public static final int icon=0x7f020004;
-        public static final int layoutbk_active=0x7f020005;
-        public static final int layoutbk_disable=0x7f020006;
-        public static final int pencil=0x7f020007;
-        public static final int push=0x7f020008;
+        public static final int bg=0x7f020001;
+        public static final int com_facebook_picker_magnifier=0x7f020002;
+        public static final int guid_pic=0x7f020003;
+        public static final int ic_launcher=0x7f020004;
+        public static final int icon=0x7f020005;
+        public static final int layoutbk_active=0x7f020006;
+        public static final int layoutbk_disable=0x7f020007;
+        public static final int pencil=0x7f020008;
+        public static final int push=0x7f020009;
     }
     public static final class id {
         public static final int LinearLayout1=0x7f090000;
-        public static final int about=0x7f09000b;
+        public static final int about=0x7f090010;
         public static final int about_actionbarLayoutId=0x7f090004;
         public static final int about_buttonLeft=0x7f090005;
         public static final int about_company=0x7f090003;
         public static final int about_icon=0x7f090001;
         public static final int about_version_name=0x7f090002;
-        public static final int answerLayout=0x7f09000f;
-        public static final int cancel=0x7f090007;
-        public static final int clear=0x7f090014;
-        public static final int createRoom=0x7f090009;
-        public static final int drawView=0x7f09000e;
-        public static final int editanswer=0x7f090010;
-        public static final int enterRoom=0x7f090008;
-        public static final int hind=0x7f09000d;
-        public static final int intruduction=0x7f09000a;
-        public static final int pen=0x7f090013;
-        public static final int ready=0x7f090012;
-        public static final int sendanswer=0x7f090011;
-        public static final int time=0x7f09000c;
-        public static final int title=0x7f090006;
+        public static final int answerLayout=0x7f090014;
+        public static final int btnColor=0x7f090020;
+        public static final int cancel=0x7f09000c;
+        public static final int clear=0x7f090019;
+        public static final int color_picker_view=0x7f090006;
+        public static final int createRoom=0x7f09000e;
+        public static final int drawView=0x7f090013;
+        public static final int editanswer=0x7f090015;
+        public static final int enterRoom=0x7f09000d;
+        public static final int hex_val=0x7f090008;
+        public static final int hind=0x7f090012;
+        public static final int intruduction=0x7f09000f;
+        public static final int lineColor=0x7f09001e;
+        public static final int lineShow=0x7f09001b;
+        public static final int new_color_panel=0x7f09000a;
+        public static final int old_color_panel=0x7f090009;
+        public static final int pen=0x7f090018;
+        public static final int ready=0x7f090017;
+        public static final int seekbarPenWidth=0x7f09001d;
+        public static final int sendanswer=0x7f090016;
+        public static final int textColor=0x7f09001f;
+        public static final int textPenWidth=0x7f09001c;
+        public static final int textShow=0x7f09001a;
+        public static final int text_hex_wrapper=0x7f090007;
+        public static final int time=0x7f090011;
+        public static final int title=0x7f09000b;
     }
     public static final class layout {
         public static final int about=0x7f030000;
         public static final int actionbar_port_about_layout=0x7f030001;
         public static final int activity_guide=0x7f030002;
-        public static final int dialog_loading=0x7f030003;
-        public static final int main=0x7f030004;
-        public static final int preroom=0x7f030005;
-        public static final int rule=0x7f030006;
-        public static final int view_null=0x7f030007;
+        public static final int dialog_color_picker=0x7f030003;
+        public static final int dialog_loading=0x7f030004;
+        public static final int main=0x7f030005;
+        public static final int preroom=0x7f030006;
+        public static final int rule=0x7f030007;
+        public static final int set_paint=0x7f030008;
+        public static final int view_null=0x7f030009;
     }
     public static final class string {
         public static final int about=0x7f060013;
@@ -86,6 +101,7 @@ public final class R {
         public static final int client_text=0x7f06000e;
         public static final int connect_peer_button=0x7f060005;
         public static final int createRoom=0x7f060007;
+        public static final int dialog_color_picker=0x7f060020;
         public static final int disconnect_peer_button=0x7f060009;
         public static final int empty=0x7f06000f;
         public static final int empty_message=0x7f060008;
@@ -100,7 +116,9 @@ public final class R {
         public static final int label_peers=0x7f06000a;
         public static final int loading=0x7f060010;
         public static final int no=0x7f06000d;
+        public static final int paintWidth=0x7f060022;
         public static final int pen=0x7f060019;
+        public static final int press_color_to_apply=0x7f060021;
         public static final int ready=0x7f06001b;
         public static final int resttime=0x7f06001c;
         public static final int roomNum=0x7f060012;

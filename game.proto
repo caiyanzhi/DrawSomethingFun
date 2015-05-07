@@ -40,8 +40,19 @@ message Game
 
   message Point
   {
-    required int32 x = 1;
-    required int32 y = 2;
+    enum PointType
+    {
+      ACTION_DOWN = 0;
+      ACTION_MOVE = 1;
+      ACTION_UP = 2;
+    }
+
+    required float x = 1;
+    required float y = 2;
+    required PointType type = 3;
+    required int32 color =4;
+    required float width=5;
+    required int32 loopCnt=6;
   }
 
   message Result
@@ -59,6 +70,7 @@ message Game
     ANSWER = 4;
     RESULT = 5;
     END = 6;
+    CLEARDRAW = 7;
   }
 
   required MsgType type = 1;
