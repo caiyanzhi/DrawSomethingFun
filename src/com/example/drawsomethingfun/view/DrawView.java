@@ -31,7 +31,8 @@ public class DrawView extends View {
     float preY;
     private Path path;
     public Paint paint = null;
-
+    public Paint mPaint = null;
+    public Paint hisPaint = null;
 	int VIEW_WIDTH = 320;
     int VIEW_HEIGHT = 480;
     Bitmap cacheBitmap = null;
@@ -67,12 +68,19 @@ public class DrawView extends View {
         path = new Path();
         cacheCanvas.setBitmap(cacheBitmap);
  
-        paint = new Paint(Paint.DITHER_FLAG);
-        paint.setColor(Color.RED);
-        paint.setStyle(Paint.Style.STROKE);
-        paint.setStrokeWidth(1);
-        paint.setAntiAlias(true);
-        paint.setDither(true);
+        mPaint = new Paint(Paint.DITHER_FLAG);
+        mPaint.setColor(Color.RED);
+        mPaint.setStyle(Paint.Style.STROKE);
+        mPaint.setStrokeWidth(1);
+        mPaint.setAntiAlias(true);
+        mPaint.setDither(true);
+        hisPaint = new Paint(Paint.DITHER_FLAG);
+        hisPaint.setColor(Color.RED);
+        hisPaint.setStyle(Paint.Style.STROKE);
+        hisPaint.setStrokeWidth(1);
+        hisPaint.setAntiAlias(true);
+        hisPaint.setDither(true);
+        paint = mPaint;
     }
     
     public void receiceDraw(Point point)
@@ -81,8 +89,8 @@ public class DrawView extends View {
     	float x = point.getX()*VIEW_WIDTH;
     	float y = point.getY()*VIEW_HEIGHT;
     	PointType type = point.getType();
-    	paint.setColor(point.getColor());
-    	paint.setStrokeWidth(point.getWidth());
+    	hisPaint.setColor(point.getColor());
+    	hisPaint.setStrokeWidth(point.getWidth());
     	switch(type.getNumber())
     	{
     	case PointType.ACTION_DOWN_VALUE:
@@ -100,6 +108,8 @@ public class DrawView extends View {
             path.reset();
     		break;
     	}
+
+        paint = hisPaint;
     	invalidate();
     }
     
@@ -132,8 +142,12 @@ public class DrawView extends View {
             path.reset();
             break;
         }
-        Game game = Game.newBuilder().setPoint(p).setType(MsgType.POINT).build();
-        NetworkManager.sendMessage(game.toByteArray());
+        if(p != null)
+        {
+        	Game game = Game.newBuilder().setPoint(p).setType(MsgType.POINT).build();
+            NetworkManager.sendMessage(game.toByteArray());
+        }
+        paint = mPaint;
         invalidate();
         return true;
     }
@@ -157,10 +171,10 @@ public class DrawView extends View {
 
 	public void setPaint(Paint paint2) {
 		// TODO Auto-generated method stub
-		paint = paint2;
+		mPaint = paint2;
 	}
     public Paint getPaint() {
-		return paint;
+		return mPaint;
 	}
 
 	public int getLoopCnt() {
