@@ -1,6 +1,7 @@
 package com.example.drawsomethingfun.controller;
 
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 
 import com.example.drawsomethingfun.Constants;
@@ -197,10 +198,8 @@ public class RoomActivity extends Activity implements OnClickListener {
 		drawView.setLoopCnt(game.getLoopCnt());
 		//开启计时的操作
 		
-		LinkedBlockingQueue blockingQueue = new LinkedBlockingQueue();
-		blockingQueue.clear();//清除线程池中的异步任务。。保证该任务马上被执行。。
 		startLoop = new StartLoop();
-		startLoop.execute();
+		startLoop.executeOnExecutor(Executors.newCachedThreadPool());
 	}
 
 	//下方按钮在非画画时的变化
