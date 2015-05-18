@@ -57,14 +57,11 @@ public class RoomActivity extends Activity implements OnClickListener {
 	MyReceiver myReceiver;
 	NetworkManager networkmanager;
 	private DrawGame game;
-	Paint mPaint = new Paint();
-	
 	//监听画笔改变
 	public class PaintChangeListener implements
 			PaintDialog.OnPaintChangedListener {
 		public void onPaintChanged(Paint paint) {
 			drawView.setPaint(paint);
-			paint = mPaint;
 		}
 	}
 	
@@ -97,7 +94,7 @@ public class RoomActivity extends Activity implements OnClickListener {
 		filter.addAction(Constants.CANCEL_LOADING);
 		filter.addAction(Constants.SOCKET_DISCONNECT);
 		registerReceiver(myReceiver, filter);
-
+		
 		initView();
 		if (roleType == Constants.CLIENT) {
 			//客户端开启接收服务器ip的线程
@@ -135,13 +132,6 @@ public class RoomActivity extends Activity implements OnClickListener {
 	}
 
 	public void initView() {
-		mPaint = new Paint(Paint.DITHER_FLAG);
-        mPaint.setColor(Color.RED);
-        mPaint.setStyle(Paint.Style.STROKE);
-        mPaint.setStrokeWidth(1);
-        mPaint.setAntiAlias(true);
-        mPaint.setDither(true);
-        
 		((Button) findViewById(R.id.ready)).setText("准备");
 		((Button) findViewById(R.id.ready)).setOnClickListener(this);
 		((Button) findViewById(R.id.ready)).setBackground(getResources()
@@ -165,7 +155,6 @@ public class RoomActivity extends Activity implements OnClickListener {
 		TextView tv = (TextView) findViewById(R.id.hind);
 		((EditText) findViewById(R.id.editanswer)).setText("");
 		game.setLoopOn(true);
-		drawView.setPaint(mPaint);
 		drawView.clear();
 		Toast.makeText(context, "新一轮开始啦", Toast.LENGTH_SHORT).show();
 		if (roleType == Constants.CLIENT) {
